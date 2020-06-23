@@ -43,7 +43,11 @@
         for (let i = 0; i < turns; i++) {
           console.group(`turn_${i + 1}`);
           playerSelection = -1;
-          while (playerSelection < 0 || playerSelection > 2) {
+          while (
+            playerSelection < 0 ||
+            playerSelection > 2 ||
+            playerSelection == ""
+          ) {
             playerSelection = prompt(`
                 Give me an option:
                 0 - ${options[0]}
@@ -77,5 +81,9 @@
 
       game();
     </script>
+    <p>Open your console to check results.</p>
+    <code>
+      Ctrl + Shift + C
+    </code>
   </body>
 </html>
