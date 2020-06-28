@@ -22,3 +22,17 @@ button > figure > img {
   vertical-align: middle;
   height: 3em;
 }
+.pcOption {
+  display: flex;
+  justify-content: center;
+  height: 250px;
+  margin: 1em auto;
+  width: 300px;
+  padding: 1em;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+.pcOption > figure > img {
+  height: 200px;
+}
