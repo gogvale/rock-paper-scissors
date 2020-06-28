@@ -10,9 +10,24 @@
   </head>
   <body>
     <div class="options">
-      <button onclick="playRound(this.id)" id="rock">Rock</button>
-      <button onclick="playRound(this.id)" id="paper">Paper</button>
-      <button onclick="playRound(this.id)" id="scissors">Scissors</button>
+      <button onclick="playRound(this.id)" id="rock">
+        <figure>
+          <img src="img/stone.svg" alt="Rock clipart" />
+          <figcaption>Rock</figcaption>
+        </figure>
+      </button>
+      <button onclick="playRound(this.id)" id="paper">
+        <figure>
+          <img src="img/paper.svg" alt="Paper clipart" />
+          <figcaption>Paper</figcaption>
+        </figure>
+      </button>
+      <button onclick="playRound(this.id)" id="scissors">
+        <figure>
+          <img src="img/scissors.svg" alt="Scissors clipart" />
+          <figcaption>Scissors</figcaption>
+        </figure>
+      </button>
     </div>
     <div id="points">
       <p id="user">Player:<span></span></p>
