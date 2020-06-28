@@ -3,87 +3,91 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>rock-paper-scissors</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>rock-paper-scissors v2.1</title>
   </head>
   <body>
-    <p>Open your console to check results.</p>
-    <code>
-      Ctrl + Shift + C
-    </code>
-    <script>
-      turns = 5;
-      options = ["rock", "paper", "scissors"];
-      function _random(n) {
-        return Math.floor(Math.random() * n);
-      }
-      function playRound(user, computer) {
-        user = user.toLowerCase();
-        computer = computer.toLowerCase();
-        console.log(`${user} × ${computer}`);
-
-        if (user === computer) return "Tie"; // Tie
-
-        if (user === "rock") {
-          if (computer === "scissors") return "Player win!";
-          else return "Player lose!";
-        } else if (user === "paper") {
-          if (computer === "rock") return "Player win!";
-          else return "Player lose!";
-        } else if (user === "scissors") {
-          if (computer === "paper") return "Player win!";
-          else return "Player lose!";
-        }
-      }
-      function computerPlay() {
-        return options[_random(options.length)];
-      }
-
-      function game() {
-        let playerSelection,
-          computerSelection,
-          result,
-          userPoints = 0,
-          PCPoints = 0;
-        for (let i = 0; i < turns; i++) {
-          console.group(`turn_${i + 1}`);
-          playerSelection = -1;
-          while (
-            playerSelection < 0 ||
-            playerSelection > 2 ||
-            playerSelection == ""
-          ) {
-            playerSelection = prompt(`
-                Give me an option:
-                0 - ${options[0]}
-                1 - ${options[1]}
-                2 - ${options[2]}
-            `);
-          }
-          playerSelection = options[playerSelection];
-          computerSelection = computerPlay();
-          result = playRound(playerSelection, computerSelection);
-          console.log(result);
-          switch (result) {
-            case "Tie":
-              PCPoints++;
-              userPoints++;
-              break;
-            case "Player win!":
-              userPoints++;
-              break;
-            case "Player lose!":
-              PCPoints++;
-          }
-          console.groupEnd(`turn_${i + 1}`);
-        }
-        console.log("Results:");
-        console.log(`PC:${PCPoints}\nUser:${userPoints}`);
-        if (PCPoints === userPoints) console.log("Tie");
-        else if (userPoints > PCPoints) console.log("Player wins!");
-        else console.log("PC wins!");
-      }
-
-      game();
-    </script>
+    <div class="options">
+      <button onclick="playRound(this.id)" id="rock">Rock</button>
+      <button onclick="playRound(this.id)" id="paper">Paper</button>
+      <button onclick="playRound(this.id)" id="scissors">Scissors</button>
+    </div>
+    <div id="points">
+      <p id="user">Player:<span></span></p>
+      <p id="pc">PC:<span></span></p>
+    </div>
+    <button onclick="resetGame()">Reset Game</button>
+    <div id="results">
+      <h2>Result: <span id="winner"></span></h2>
+      <ul class="results"></ul>
+    </div>
   </body>
+  <script>
+    let playerSelection,
+      computerSelection,
+      result,
+      userPoints,
+      PCPoints,
+      rounds;
+    resetGame();
+    function updateScores() {
+      document.querySelector("#user>span").textContent = userPoints;
+      document.querySelector("#pc>span").textContent = PCPoints;
+    }
+    function _random(n) {
+      return Math.floor(Math.random() * n);
+    }
+    function playRound(user) {
+      computer = computerPlay().toLowerCase();
+      user = user.toLowerCase();
+      let result;
+
+      if (user === computer) {
+        result = "Tie";
+      } else if (user === "rock") {
+        if (computer === "scissors") result = "Player win!";
+        else result = "Player lose!";
+      } else if (user === "paper") {
+        if (computer === "rock") result = "Player win!";
+        else result = "Player lose!";
+      } else if (user === "scissors") {
+        if (computer === "paper") result = "Player win!";
+        else result = "Player lose!";
+      }
+
+      result === "Player lose!" ? PCPoints++ : userPoints++;
+      updateDOM(result);
+      if (++rounds === 5) printFinalResult();
+    }
+    function computerPlay() {
+      return ["rock", "paper", "scissors"][_random(3)];
+    }
+    function updateDOM(result) {
+      const list = document.querySelector(".results");
+      if (!result) {
+        console.log("Resetting DOM…");
+        list.innerHTML = "";
+        return;
+      }
+      const li = document.createElement("li");
+      li.textContent = result;
+      list.appendChild(li);
+      updateScores();
+    }
+    function printFinalResult() {
+      const winner = document.querySelector("#winner");
+      if (PCPoints === userPoints) winner.textContent = "It's a tie!";
+      winner.textContent = userPoints > PCPoints ? "User WINS!" : "PC WINS!";
+    }
+    function resetGame() {
+      playerSelection = "";
+      computerSelection = "";
+      result = "";
+      userPoints = 0;
+      PCPoints = 0;
+      rounds = 0;
+      updateScores();
+      updateDOM();
+    }
+  </script>
 </html>
