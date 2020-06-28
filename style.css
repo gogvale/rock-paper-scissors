@@ -2,11 +2,11 @@ body {
   background-color: purple;
 }
 .options > button {
-  color: green;
   height: 7em;
   width: 7em;
   border-radius: 50%;
   margin: auto 1em;
+  background-color: hsl(12, 88%, 84%);
 }
 .options {
   display: flex;
@@ -35,6 +35,7 @@ button > figure > img {
   border: 1px solid black;
   border-radius: 20px;
   font-weight: bolder;
+  background-color: hsl(12, 88%, 84%);
 }
 .pcOption > figure > img {
   height: 200px;
