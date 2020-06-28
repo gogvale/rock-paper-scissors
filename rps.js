@@ -1,4 +1,4 @@
-let playerSelection, computerSelection, result, userPoints, PCPoints, rounds;
+let userPoints, PCPoints, rounds;
 resetGame();
 function updateScores() {
   document.querySelector("#user>span").textContent = userPoints;
@@ -35,7 +35,11 @@ function playRound(user) {
     else result = "Player lose!";
   }
 
-  result === "Player lose!" ? PCPoints++ : userPoints++;
+  if (result == "Player lose!") PCPoints++;
+  else if (result == "Tie") {
+    PCPoints++;
+    userPoints++;
+  } else userPoints++;
   updateDOM(result);
   if (++rounds === 5) printFinalResult();
 }
@@ -52,8 +56,10 @@ function computerPlay() {
 function updateDOM(result) {
   const list = document.querySelector(".results");
   if (!result) {
+    const winner = document.querySelector("h2>span");
     console.log("Resetting DOM…");
     list.innerHTML = "";
+    winner.innerHTML = "";
     return;
   }
   const li = document.createElement("li");
@@ -62,17 +68,27 @@ function updateDOM(result) {
   updateScores();
 }
 function printFinalResult() {
+  const user = document.querySelector("#user");
+  const pc = document.querySelector("#pc");
   const winner = document.querySelector("#winner");
-  if (PCPoints === userPoints) winner.textContent = "It's a tie!";
-  winner.textContent = userPoints > PCPoints ? "User WINS!" : "PC WINS!";
+  if (userPoints === PCPoints) {
+    winner.textContent = "It's a tie!";
+    user.classList.add("green-text");
+    pc.classList.add("green-text");
+  } else if (userPoints > PCPoints) {
+    user.classList.add("green-text");
+    winner.textContent = "User WINS!";
+  } else {
+    pc.classList.add("green-text");
+    winner.textContent = "PC WINS!";
+  }
 }
 function resetGame() {
-  playerSelection = "";
-  computerSelection = "";
-  result = "";
   userPoints = 0;
   PCPoints = 0;
   rounds = 0;
+  document.querySelector("#user").classList.remove("green-text");
+  document.querySelector("#pc").classList.remove("green-text");
   updateScores();
   updateDOM();
 }
