@@ -56,6 +56,11 @@ function computerPlay() {
 function updateDOM(result) {
   const list = document.querySelector(".results");
   if (!result) {
+    document.querySelector(".pcOption>figure>img").src = `img/default.svg`;
+    const pcCardSub = (document.querySelector(
+      ".pcOption>figure>figcaption"
+    ).textContent = "");
+
     const winner = document.querySelector("h2>span");
     console.log("Resetting DOM…");
     list.innerHTML = "";

@@ -6,44 +6,53 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-    <title>rock-paper-scissors v2.3</title>
+    <title>rock-paper-scissors v3.0</title>
   </head>
   <body>
-    <div class="pcOption">
-      <figure>
-        <img src="" alt="PC Option" />
-        <figcaption></figcaption>
-      </figure>
-    </div>
-    <div class="options">
-      <button onclick="playRound(this.id)" id="rock">
-        <figure>
-          <img src="img/rock.svg" alt="Rock clipart" />
-          <figcaption>Rock</figcaption>
-        </figure>
-      </button>
-      <button onclick="playRound(this.id)" id="paper">
-        <figure>
-          <img src="img/paper.svg" alt="Paper clipart" />
-          <figcaption>Paper</figcaption>
-        </figure>
-      </button>
-      <button onclick="playRound(this.id)" id="scissors">
-        <figure>
-          <img src="img/scissors.svg" alt="Scissors clipart" />
-          <figcaption>Scissors</figcaption>
-        </figure>
-      </button>
-    </div>
-    <div id="points">
-      <p id="user">Player:<span></span></p>
-      <p id="pc">PC:<span></span></p>
-    </div>
-    <button onclick="resetGame()">Reset Game</button>
-    <div id="results">
-      <h2>Result: <span id="winner"></span></h2>
-      <ul class="results"></ul>
-    </div>
+    <main>
+      <header>Rock, Paper, Scissors Game</header>
+      <div id="game">
+        <div class="pcOption">
+          <figure>
+            <img src="img/default.svg" alt="PC Option" />
+            <figcaption></figcaption>
+          </figure>
+        </div>
+        <div class="options">
+          <button onclick="playRound(this.id)" id="rock">
+            <figure>
+              <img src="img/rock.svg" alt="Rock clipart" />
+              <figcaption>Rock</figcaption>
+            </figure>
+          </button>
+          <button onclick="playRound(this.id)" id="paper">
+            <figure>
+              <img src="img/paper.svg" alt="Paper clipart" />
+              <figcaption>Paper</figcaption>
+            </figure>
+          </button>
+          <button onclick="playRound(this.id)" id="scissors">
+            <figure>
+              <img src="img/scissors.svg" alt="Scissors clipart" />
+              <figcaption>Scissors</figcaption>
+            </figure>
+          </button>
+        </div>
+        <div id="points">
+          <p id="user">Player:<span></span></p>
+          <p id="pc">PC:<span></span></p>
+        </div>
+        <div class="flow">
+          <button id="restart" onclick="resetGame()">
+            🔁
+          </button>
+        </div>
+      </div>
+      <div id="results">
+        <h2>Result: <span id="winner"></span></h2>
+        <ul class="results"></ul>
+      </div>
+    </main>
   </body>
   <script src="rps.js"></script>
 </html>
