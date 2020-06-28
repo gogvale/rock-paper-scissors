@@ -38,6 +38,16 @@
       return Math.floor(Math.random() * n);
     }
     function playRound(user) {
+      if (rounds >= 5) {
+        let ans = confirm(
+          "We already have a winner, do you want to restart the game?"
+        );
+        if (ans) {
+          resetGame();
+          return;
+        }
+      }
+
       computer = computerPlay().toLowerCase();
       user = user.toLowerCase();
       let result;
