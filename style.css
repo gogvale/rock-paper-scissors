@@ -32,7 +32,9 @@ button > figure > img {
   text-align: center;
   border: 1px solid black;
   border-radius: 20px;
+  font-weight: bolder;
 }
 .pcOption > figure > img {
   height: 200px;
+  margin: 20px auto;
 }

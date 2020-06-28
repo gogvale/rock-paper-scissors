@@ -40,7 +40,14 @@ function playRound(user) {
   if (++rounds === 5) printFinalResult();
 }
 function computerPlay() {
-  return ["rock", "paper", "scissors"][_random(3)];
+  const options = ["rock", "paper", "scissors"];
+  const pcCard = document.querySelector(".pcOption>figure>img");
+  const pcCardSub = document.querySelector(".pcOption>figure>figcaption");
+  let pcOption = options[_random(options.length)];
+  pcCard.src = `img/${pcOption}.svg`;
+  pcCardSub.textContent = pcOption.toLocaleUpperCase();
+
+  return pcOption;
 }
 function updateDOM(result) {
   const list = document.querySelector(".results");
