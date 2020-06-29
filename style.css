@@ -84,6 +84,11 @@ header {
   background-color: rgb(255, 239, 218);
   padding: 20px;
   border: 1px solid black;
+  max-width: 15vw;
+  max-height: 50vh;
+  overflow: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 #results li {
   font-size: 2em;

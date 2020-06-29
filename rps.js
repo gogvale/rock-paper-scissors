@@ -71,6 +71,7 @@ function updateDOM(result) {
   li.textContent = result;
   list.appendChild(li);
   updateScores();
+  results.scrollTop += 1000;
 }
 function printFinalResult() {
   const user = document.querySelector("#user");
