@@ -102,5 +102,5 @@ header {
 }
 .selected {
   background-color: hsl(120, 90%, 35%) !important;
-  color: black;
+  color: white;
 }
