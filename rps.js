@@ -41,7 +41,7 @@ function playRound(user) {
     userPoints++;
   } else userPoints++;
   updateDOM(result);
-  if (++rounds === 5) printFinalResult();
+  if (++rounds >= 5) printFinalResult();
 }
 function computerPlay() {
   const options = ["rock", "paper", "scissors"];
@@ -83,9 +83,11 @@ function printFinalResult() {
     pc.classList.add("green-text");
   } else if (userPoints > PCPoints) {
     user.classList.add("green-text");
+    pc.classList.remove("green-text");
     winner.textContent = "User WINS!";
   } else {
     pc.classList.add("green-text");
+    user.classList.remove("green-text");
     winner.textContent = "PC WINS!";
   }
 }
