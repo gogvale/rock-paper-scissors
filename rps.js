@@ -7,7 +7,13 @@ function updateScores() {
 function _random(n) {
   return Math.floor(Math.random() * n);
 }
+function resetButtons() {
+  let options = Array.from(document.querySelectorAll(".options>*"));
+  options.forEach((e) => e.classList.remove("selected"));
+}
 function playRound(user) {
+  resetButtons();
+  document.querySelector(`#${user}`).classList.add("selected");
   if (rounds >= 5) {
     let ans = confirm(
       "We already have a winner, do you want to restart the game?"
@@ -65,6 +71,7 @@ function updateDOM(result) {
     console.log("Resetting DOM…");
     list.innerHTML = "";
     winner.innerHTML = "";
+    resetButtons();
     return;
   }
   const li = document.createElement("li");

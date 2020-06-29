@@ -7,6 +7,7 @@ body {
   border-radius: 50%;
   margin: auto 1em;
   background-color: hsl(12, 88%, 84%);
+  border: none;
 }
 .options {
   display: flex;
@@ -32,7 +33,7 @@ button > figure > img {
   width: 300px;
   padding: 1em;
   text-align: center;
-  border: 1px solid black;
+  border: none;
   border-radius: 20px;
   font-weight: bolder;
   background-color: hsl(12, 88%, 84%);
@@ -98,4 +99,8 @@ header {
   #results {
     visibility: hidden;
   }
+}
+.selected {
+  background-color: hsl(120, 90%, 35%) !important;
+  color: black;
 }
